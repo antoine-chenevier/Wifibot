@@ -20,6 +20,14 @@ private slots:
 
     void on_disconnect_clicked();
 
+    void on_r_top_pressed();
+
+    void on_r_left_pressed();
+
+    void on_r_buttom_pressed();
+
+    void on_r_right_pressed();
+
 private:
     Ui::MainWindow *ui;
     MyRobot robot;

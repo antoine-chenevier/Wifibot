@@ -27,3 +27,27 @@ void MainWindow::on_disconnect_clicked()
     robot.disConnect();
 }
 
+
+void MainWindow::on_r_top_pressed()
+{
+
+}
+
+
+void MainWindow::on_r_left_pressed()
+{
+
+}
+
+
+void MainWindow::on_r_buttom_pressed()
+{
+
+}
+
+
+void MainWindow::on_r_right_pressed()
+{
+
+}
+
