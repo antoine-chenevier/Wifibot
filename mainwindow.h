@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 #include "myrobot.h"
 #include <QMainWindow>
+#include <qnetworkaccessmanager.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -31,5 +32,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
     MyRobot robot;
+    QNetworkAccessManager *manager;
+    QNetworkRequest request;
 };
 #endif // MAINWINDOW_H

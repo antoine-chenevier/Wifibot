@@ -108,7 +108,7 @@
    <widget class="QWebEngineView" name="view" native="true">
     <property name="geometry">
      <rect>
-      <x>140</x>
+      <x>150</x>
       <y>180</y>
       <width>371</width>
       <height>281</height>
