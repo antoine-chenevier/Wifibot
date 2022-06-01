@@ -69,3 +69,31 @@ void MyRobot::MyTimerSlot() {
     Mutex.unlock();
 }
 
+short MyRobot::Crc16(QByteArray Adresse_tab,unsigned int Taille_max){
+    unsigned short crc = 0xFFFF;
+    unsigned short polynome = 0xA001;
+    unsigned short parity = 0;
+    unsigned short CptBit = 0;
+
+    for(auto it=Adresse_tab.begin()+1; it != Adresse_tab.begin()+Taille_max;it++){
+     crc ^= *it;
+        for(CptBit=0; CptBit <= 7; CptBit++){
+            parity = crc;
+            crc >>=1;
+                if(parity%2 == true) crc ^= polynome;
+        }
+    }
+
+    return crc;
+    }
+
+
+
+
+
+
+
+
+
+
+
