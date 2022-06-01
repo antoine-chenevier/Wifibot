@@ -1,12 +1,18 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+#include <QWebEngineView>
+#include <QUrl>
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
     , robot(parent)
 {
     ui->setupUi(this);
+    QWebEngineView* view = this->findChild<QWebEngineView*>("view");
+    view->load(QUrl("http://192.168.1.106:8080/?action=stream"));
+    view->show();
 }
 
 MainWindow::~MainWindow()
@@ -30,6 +36,7 @@ void MainWindow::on_disconnect_clicked()
 
 void MainWindow::on_r_top_pressed()
 {
+
 
 }
 
