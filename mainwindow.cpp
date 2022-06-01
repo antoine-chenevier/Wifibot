@@ -78,3 +78,48 @@ void MainWindow::on_r_right_pressed()
             manager->get(request);
 }
 
+
+void MainWindow::on_robot_right_pressed()
+{
+
+}
+
+void MainWindow::on_robot_buttom_pressed()
+{
+
+}
+
+
+void MainWindow::on_robot_left_pressed()
+{
+
+}
+
+
+void MainWindow::on_robot_top_pressed()
+{
+
+}
+
+void MainWindow::on_robot_right_released()
+{
+
+}
+
+void MainWindow::on_robot_buttom_released()
+{
+
+}
+
+
+void MainWindow::on_robot_left_released()
+{
+
+}
+
+
+void MainWindow::on_robot_top_released()
+{
+
+}
+

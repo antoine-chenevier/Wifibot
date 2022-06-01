@@ -43,8 +43,8 @@
    <widget class="QPushButton" name="r_top">
     <property name="geometry">
      <rect>
-      <x>680</x>
-      <y>290</y>
+      <x>710</x>
+      <y>270</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -56,8 +56,8 @@
    <widget class="QPushButton" name="r_buttom">
     <property name="geometry">
      <rect>
-      <x>680</x>
-      <y>370</y>
+      <x>710</x>
+      <y>350</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -69,8 +69,8 @@
    <widget class="QPushButton" name="r_left">
     <property name="geometry">
      <rect>
-      <x>640</x>
-      <y>330</y>
+      <x>670</x>
+      <y>310</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -82,8 +82,8 @@
    <widget class="QPushButton" name="r_right">
     <property name="geometry">
      <rect>
-      <x>720</x>
-      <y>330</y>
+      <x>750</x>
+      <y>310</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -108,11 +108,63 @@
    <widget class="QWebEngineView" name="view" native="true">
     <property name="geometry">
      <rect>
-      <x>150</x>
-      <y>180</y>
+      <x>270</x>
+      <y>190</y>
       <width>371</width>
       <height>281</height>
      </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="robot_left">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>290</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="robot_buttom">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>330</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>v</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="robot_right">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>290</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&gt;</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="robot_top">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>250</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>^</string>
     </property>
    </widget>
   </widget>
