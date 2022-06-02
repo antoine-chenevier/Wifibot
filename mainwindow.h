@@ -43,6 +43,9 @@ private slots:
 
     void on_toggleConnect_clicked();
 
+
+    void on_update(const QByteArray);
+
 private:
     Ui::MainWindow *ui;
     MyRobot robot;

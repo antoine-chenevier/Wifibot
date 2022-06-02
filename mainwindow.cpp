@@ -28,6 +28,8 @@ MainWindow::MainWindow(QWidget *parent)
               qDebug() << answer;
     });
 
+    connect(&robot, &MyRobot::updateUI, this, &MainWindow::on_update);
+
 }
 
 MainWindow::~MainWindow()
@@ -227,5 +229,10 @@ void MainWindow::on_toggleConnect_clicked()
            right->setDisabled(false);
            bottom->setDisabled(false);
        }
+}
+
+
+void MainWindow::on_update(const QByteArray Data) {
+
 }
 
