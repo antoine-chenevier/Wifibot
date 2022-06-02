@@ -152,7 +152,7 @@ void MainWindow::on_toggleConnect_clicked()
            robot.disConnect();
            connected = false;
 
-           toggle->setText("Disconnect");
+           toggle->setText("Connect");
            top->setDisabled(true);
            left->setDisabled(true);
            right->setDisabled(true);
@@ -161,7 +161,7 @@ void MainWindow::on_toggleConnect_clicked()
            robot.doConnect();
            connected = true;
 
-           toggle->setText("Connect");
+           toggle->setText("Disconnect");
            top->setDisabled(false);
            left->setDisabled(false);
            right->setDisabled(false);

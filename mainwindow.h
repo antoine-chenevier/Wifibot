@@ -17,10 +17,6 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_connection_clicked();
-
-    void on_disconnect_clicked();
-
     void on_r_top_pressed();
 
     void on_r_left_pressed();
