@@ -45,10 +45,13 @@ private slots:
 
     void on_robot_bottom_released();
 
+    void on_toggleConnect_clicked();
+
 private:
     Ui::MainWindow *ui;
     MyRobot robot;
     QNetworkAccessManager *manager;
     QNetworkRequest request;
+    bool connected;
 };
 #endif // MAINWINDOW_H

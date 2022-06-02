@@ -9,6 +9,7 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
     , robot(parent)
+    , connected(false)
 {
     ui->setupUi(this);
     QWebEngineView* view = this->findChild<QWebEngineView*>("view");
@@ -31,21 +32,11 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
+    if (connected) {
+        robot.disconnect();
+    }
     delete ui;
     delete manager;
-}
-
-
-void MainWindow::on_connection_clicked()
-{
-    //ui->connection->
-    robot.doConnect();
-}
-
-
-void MainWindow::on_disconnect_clicked()
-{
-    robot.disConnect();
 }
 
 
@@ -146,5 +137,35 @@ void MainWindow::on_robot_bottom_pressed()
 void MainWindow::on_robot_bottom_released()
 {
 
+}
+
+
+void MainWindow::on_toggleConnect_clicked()
+{
+       QPushButton *toggle = findChild<QPushButton*>("toggleConnect");
+       QPushButton *top = findChild<QPushButton*>("robot_top");
+       QPushButton *left = findChild<QPushButton*>("robot_left");
+       QPushButton *right = findChild<QPushButton*>("robot_right");
+       QPushButton *bottom = findChild<QPushButton*>("robot_bottom");
+
+       if (connected) {
+           robot.disConnect();
+           connected = false;
+
+           toggle->setText("Disconnect");
+           top->setDisabled(true);
+           left->setDisabled(true);
+           right->setDisabled(true);
+           bottom->setDisabled(true);
+       } else {
+           robot.doConnect();
+           connected = true;
+
+           toggle->setText("Connect");
+           top->setDisabled(false);
+           left->setDisabled(false);
+           right->setDisabled(false);
+           bottom->setDisabled(false);
+       }
 }
 
