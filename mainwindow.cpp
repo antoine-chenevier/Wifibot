@@ -72,12 +72,33 @@ void MainWindow::on_r_right_pressed()
 
 void MainWindow::on_robot_right_pressed()
 {
+    robot.DataToSend[2] =100;
+    robot.DataToSend[3] = 0;
+    robot.DataToSend[4] =0;
+    robot.DataToSend[5] = 0;
+    robot.DataToSend[6] = 64 + 16; // ajouter 128+32 pour asservissement
+    short crc = robot.Crc16(robot.DataToSend, 7);
 
+    char low = crc;
+    char high = crc >> 8;
+    robot.DataToSend[7] = low;
+    robot.DataToSend[8] = high;
 }
 
 
 void MainWindow::on_robot_left_pressed()
 {
+     robot.DataToSend[2] = 0;
+     robot.DataToSend[3] = 0;
+     robot.DataToSend[4] = 100;
+     robot.DataToSend[5] = 0;
+     robot.DataToSend[6] = 64 + 16; // ajouter 128+32 pour asservissement
+     short crc = robot.Crc16(robot.DataToSend, 7);
+
+     char low = crc;
+     char high = crc >> 8;
+     robot.DataToSend[7] = low;
+     robot.DataToSend[8] = high;
 
 }
 
@@ -117,7 +138,17 @@ void MainWindow::on_robot_right_released()
 
 void MainWindow::on_robot_left_released()
 {
+    robot.DataToSend[2] = 0;
+    robot.DataToSend[3] = 0;
+    robot.DataToSend[4] = 0;
+    robot.DataToSend[5] = 0;
+    robot.DataToSend[6] = 0;
+    short crc = robot.Crc16(robot.DataToSend, 7);
 
+    char low = crc;
+    char high = crc >> 8;
+    robot.DataToSend[7] = low;
+    robot.DataToSend[8] = high;
 }
 
 
@@ -139,13 +170,33 @@ void MainWindow::on_robot_top_released()
 
 void MainWindow::on_robot_bottom_pressed()
 {
+    robot.DataToSend[2] = 100;
+    robot.DataToSend[3] = 0;
+    robot.DataToSend[4] = 100;
+    robot.DataToSend[5] = 0;
+    robot.DataToSend[6] = 0+0; // ajouter 128+32 pour asservissement
+    short crc = robot.Crc16(robot.DataToSend, 7);
 
+    char low = crc;
+    char high = crc >> 8;
+    robot.DataToSend[7] = low;
+    robot.DataToSend[8] = high;
 }
 
 
 void MainWindow::on_robot_bottom_released()
 {
+    robot.DataToSend[2] = 0;
+    robot.DataToSend[3] = 0;
+    robot.DataToSend[4] = 0;
+    robot.DataToSend[5] = 0;
+    robot.DataToSend[6] = 0;
+    short crc = robot.Crc16(robot.DataToSend, 7);
 
+    char low = crc;
+    char high = crc >> 8;
+    robot.DataToSend[7] = low;
+    robot.DataToSend[8] = high;
 }
 
 
