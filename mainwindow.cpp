@@ -123,8 +123,17 @@ void MainWindow::on_robot_left_released()
 
 void MainWindow::on_robot_top_released()
 {
-    robot.DataToSend[3] =0;
-    robot.DataToSend[5] =0;
+    robot.DataToSend[2] = 0;
+    robot.DataToSend[3] = 0;
+    robot.DataToSend[4] = 0;
+    robot.DataToSend[5] = 0;
+    robot.DataToSend[6] = 0;
+    short crc = robot.Crc16(robot.DataToSend, 7);
+
+    char low = crc;
+    char high = crc >> 8;
+    robot.DataToSend[7] = low;
+    robot.DataToSend[8] = high;
 }
 
 
