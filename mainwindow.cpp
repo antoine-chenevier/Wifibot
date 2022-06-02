@@ -84,11 +84,6 @@ void MainWindow::on_robot_right_pressed()
 
 }
 
-void MainWindow::on_robot_buttom_pressed()
-{
-
-}
-
 
 void MainWindow::on_robot_left_pressed()
 {
@@ -128,11 +123,6 @@ void MainWindow::on_robot_right_released()
     robot.DataToSend[8] = high;
 }
 
-void MainWindow::on_robot_buttom_released()
-{
-
-}
-
 
 void MainWindow::on_robot_left_released()
 {
@@ -144,5 +134,17 @@ void MainWindow::on_robot_top_released()
 {
     robot.DataToSend[3] =0;
     robot.DataToSend[5] =0;
+}
+
+
+void MainWindow::on_robot_bottom_pressed()
+{
+
+}
+
+
+void MainWindow::on_robot_bottom_released()
+{
+
 }
 

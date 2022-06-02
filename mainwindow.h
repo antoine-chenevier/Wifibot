@@ -33,17 +33,17 @@ private slots:
 
     void on_robot_right_released();
 
-    void on_robot_buttom_pressed();
-
     void on_robot_left_pressed();
 
     void on_robot_top_pressed();
 
-    void on_robot_buttom_released();
-
     void on_robot_left_released();
 
     void on_robot_top_released();
+
+    void on_robot_bottom_pressed();
+
+    void on_robot_bottom_released();
 
 private:
     Ui::MainWindow *ui;

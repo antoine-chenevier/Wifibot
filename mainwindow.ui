@@ -128,7 +128,7 @@
      <string>&lt;</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="robot_buttom">
+   <widget class="QPushButton" name="robot_bottom">
     <property name="geometry">
      <rect>
       <x>80</x>
