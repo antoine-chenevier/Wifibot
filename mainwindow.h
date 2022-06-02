@@ -43,11 +43,14 @@ private slots:
 
     void on_toggleConnect_clicked();
 
+    void on_horizontalSlider_valueChanged(int value);
+
 private:
     Ui::MainWindow *ui;
     MyRobot robot;
     QNetworkAccessManager *manager;
     QNetworkRequest request;
     bool connected;
+    int speed;
 };
 #endif // MAINWINDOW_H
