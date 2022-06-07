@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
@@ -233,6 +235,9 @@ void MainWindow::on_toggleConnect_clicked()
 
 
 void MainWindow::on_update(const QByteArray Data) {
+
+    std::cout << (int) Data[0] << std::endl << (int) Data[1] << std::endl;
+    std::cout << "received" << std::endl;
 
 }
 
