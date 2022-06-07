@@ -13,6 +13,7 @@ MainWindow::MainWindow(QWidget *parent)
     , robot(parent)
     , connected(false)
     ,speed(120)
+    ,MaxSpeed(0)
 {
     ui->setupUi(this);
     QWebEngineView* view = this->findChild<QWebEngineView*>("view");
@@ -77,10 +78,12 @@ void MainWindow::on_r_right_pressed()
 
 void MainWindow::on_robot_right_pressed()
 {
+    int s1=speed/128;
+    int s2=speed%128;
     robot.DataToSend[2] = speed;
-    robot.DataToSend[3] = speed;
+    robot.DataToSend[3] = MaxSpeed;
     robot.DataToSend[4] = speed;
-    robot.DataToSend[5] = speed;
+    robot.DataToSend[5] = MaxSpeed;
     robot.DataToSend[6] = 64; // ajouter 128+32 pour asservissement
     short crc = robot.Crc16(robot.DataToSend, 7);
 
@@ -94,9 +97,9 @@ void MainWindow::on_robot_right_pressed()
 void MainWindow::on_robot_left_pressed()
 {
      robot.DataToSend[2] = speed;
-     robot.DataToSend[3] = speed;
+     robot.DataToSend[3] = MaxSpeed;
      robot.DataToSend[4] = speed;
-     robot.DataToSend[5] = speed;
+     robot.DataToSend[5] = MaxSpeed;
      robot.DataToSend[6] = 16; // ajouter 128+32 pour asservissement
      short crc = robot.Crc16(robot.DataToSend, 7);
 
@@ -111,9 +114,9 @@ void MainWindow::on_robot_left_pressed()
 void MainWindow::on_robot_top_pressed()
 {
     robot.DataToSend[2] = speed;
-    robot.DataToSend[3] = speed;
+    robot.DataToSend[3] = MaxSpeed;
     robot.DataToSend[4] = speed;
-    robot.DataToSend[5] = speed;
+    robot.DataToSend[5] = MaxSpeed;
     robot.DataToSend[6] = 64 + 16; // ajouter 128+32 pour asservissement
     short crc = robot.Crc16(robot.DataToSend, 7);
 
@@ -128,9 +131,9 @@ void MainWindow::on_robot_top_pressed()
 void MainWindow::on_robot_bottom_pressed()
 {
     robot.DataToSend[2] = speed;
-    robot.DataToSend[3] = speed;
+    robot.DataToSend[3] = MaxSpeed;
     robot.DataToSend[4] = speed;
-    robot.DataToSend[5] = speed;
+    robot.DataToSend[5] = MaxSpeed;
     robot.DataToSend[6] = 0+0; // ajouter 128+32 pour asservissement
     short crc = robot.Crc16(robot.DataToSend, 7);
 
@@ -206,6 +209,32 @@ void MainWindow::on_robot_bottom_released()
     robot.DataToSend[8] = high;
 }
 
+void MainWindow::turn_left(){
+    robot.DataToSend[2] = 0;
+    robot.DataToSend[3] = 0;
+    robot.DataToSend[4] = speed;
+    robot.DataToSend[5] = speed;
+    robot.DataToSend[6] = 16;
+    short crc = robot.Crc16(robot.DataToSend, 7);
+
+    char low = crc;
+    char high = crc >> 8;
+    robot.DataToSend[7] = low;
+    robot.DataToSend[8] = high;
+}
+void MainWindow::turn_right(){
+    robot.DataToSend[2] = speed;
+    robot.DataToSend[3] = speed;
+    robot.DataToSend[4] = 0;
+    robot.DataToSend[5] = 0;
+    robot.DataToSend[6] = 64;
+    short crc = robot.Crc16(robot.DataToSend, 7);
+
+    char low = crc;
+    char high = crc >> 8;
+    robot.DataToSend[7] = low;
+    robot.DataToSend[8] = high;
+}
 
 void MainWindow::on_toggleConnect_clicked()
 {
@@ -237,18 +266,28 @@ void MainWindow::on_toggleConnect_clicked()
 }
 
 
-<<<<<<< HEAD
+
 void MainWindow::on_update(const QByteArray Data) {
 
     std::cout << (int) Data[0] << std::endl << (int) Data[1] << std::endl;
     std::cout << "received" << std::endl;
 
-=======
+}
 
 
 void MainWindow::on_horizontalSlider_valueChanged(int value)
 {
     speed=value;
->>>>>>> 002632e44d16daa61c24d9992b34ca86785a793b
+
+}
+
+void MainWindow::on_MaxSpeed_clicked(bool checked)
+{
+    if(checked==true){
+        MaxSpeed=1;
+    }
+    else{
+        MaxSpeed=0;
+    }
 }
 

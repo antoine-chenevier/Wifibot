@@ -94,10 +94,10 @@
    <widget class="QWebEngineView" name="view" native="true">
     <property name="geometry">
      <rect>
-      <x>180</x>
+      <x>230</x>
       <y>70</y>
-      <width>451</width>
-      <height>351</height>
+      <width>401</width>
+      <height>301</height>
      </rect>
     </property>
    </widget>
@@ -200,10 +200,10 @@
      </rect>
     </property>
     <property name="minimum">
-     <number>70</number>
+     <number>10</number>
     </property>
     <property name="maximum">
-     <number>240</number>
+     <number>120</number>
     </property>
     <property name="singleStep">
      <number>5</number>
@@ -216,6 +216,25 @@
     </property>
     <property name="orientation">
      <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="MaxSpeed">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>450</y>
+      <width>101</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Max Speed</string>
+    </property>
+    <property name="checked">
+     <bool>true</bool>
+    </property>
+    <property name="tristate">
+     <bool>false</bool>
     </property>
    </widget>
   </widget>

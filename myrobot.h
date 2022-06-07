@@ -15,6 +15,8 @@ public:
     explicit MyRobot(QObject *parent = 0);
     void doConnect();
     void disConnect();
+    void turn_left();
+    void turn_right();
     QByteArray DataToSend;
     QByteArray DataReceived;
     QMutex Mutex;

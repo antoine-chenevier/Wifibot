@@ -43,12 +43,14 @@ private slots:
 
     void on_toggleConnect_clicked();
 
-<<<<<<< HEAD
+    void turn_right();
+    void turn_left();
 
     void on_update(const QByteArray);
-=======
+
     void on_horizontalSlider_valueChanged(int value);
->>>>>>> 002632e44d16daa61c24d9992b34ca86785a793b
+
+    void on_MaxSpeed_clicked(bool checked);
 
 private:
     Ui::MainWindow *ui;
@@ -57,5 +59,6 @@ private:
     QNetworkRequest request;
     bool connected;
     int speed;
+    int MaxSpeed;
 };
 #endif // MAINWINDOW_H

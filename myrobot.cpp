@@ -84,8 +84,10 @@ short MyRobot::Crc16(QByteArray Adresse_tab,unsigned int Taille_max){
         }
     }
 
+
     return crc;
     }
+
 
 
 
