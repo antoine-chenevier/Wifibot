@@ -43,12 +43,9 @@ private slots:
 
     void on_toggleConnect_clicked();
 
-<<<<<<< HEAD
-
     void on_update(const QByteArray);
-=======
+
     void on_horizontalSlider_valueChanged(int value);
->>>>>>> 002632e44d16daa61c24d9992b34ca86785a793b
 
 private:
     Ui::MainWindow *ui;
