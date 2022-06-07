@@ -74,10 +74,10 @@ void MainWindow::on_r_right_pressed()
 void MainWindow::on_robot_right_pressed()
 {
     robot.DataToSend[2] = speed;
-    robot.DataToSend[3] = 0;
-    robot.DataToSend[4] = 0;
-    robot.DataToSend[5] = 0;
-    robot.DataToSend[6] = 64 + 16; // ajouter 128+32 pour asservissement
+    robot.DataToSend[3] = speed;
+    robot.DataToSend[4] = speed;
+    robot.DataToSend[5] = speed;
+    robot.DataToSend[6] = 64; // ajouter 128+32 pour asservissement
     short crc = robot.Crc16(robot.DataToSend, 7);
 
     char low = crc;
@@ -89,11 +89,11 @@ void MainWindow::on_robot_right_pressed()
 
 void MainWindow::on_robot_left_pressed()
 {
-     robot.DataToSend[2] = 0;
-     robot.DataToSend[3] = 0;
+     robot.DataToSend[2] = speed;
+     robot.DataToSend[3] = speed;
      robot.DataToSend[4] = speed;
-     robot.DataToSend[5] = 0;
-     robot.DataToSend[6] = 64 + 16; // ajouter 128+32 pour asservissement
+     robot.DataToSend[5] = speed;
+     robot.DataToSend[6] = 16; // ajouter 128+32 pour asservissement
      short crc = robot.Crc16(robot.DataToSend, 7);
 
      char low = crc;
@@ -107,9 +107,9 @@ void MainWindow::on_robot_left_pressed()
 void MainWindow::on_robot_top_pressed()
 {
     robot.DataToSend[2] = speed;
-    robot.DataToSend[3] = 0;
+    robot.DataToSend[3] = speed;
     robot.DataToSend[4] = speed;
-    robot.DataToSend[5] = 0;
+    robot.DataToSend[5] = speed;
     robot.DataToSend[6] = 64 + 16; // ajouter 128+32 pour asservissement
     short crc = robot.Crc16(robot.DataToSend, 7);
 
@@ -124,9 +124,9 @@ void MainWindow::on_robot_top_pressed()
 void MainWindow::on_robot_bottom_pressed()
 {
     robot.DataToSend[2] = speed;
-    robot.DataToSend[3] = 0;
+    robot.DataToSend[3] = speed;
     robot.DataToSend[4] = speed;
-    robot.DataToSend[5] = 0;
+    robot.DataToSend[5] = speed;
     robot.DataToSend[6] = 0+0; // ajouter 128+32 pour asservissement
     short crc = robot.Crc16(robot.DataToSend, 7);
 
