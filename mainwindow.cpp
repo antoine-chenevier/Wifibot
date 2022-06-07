@@ -1,5 +1,4 @@
 #include <iostream>
-
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
@@ -269,11 +268,36 @@ void MainWindow::on_toggleConnect_clicked()
 
 void MainWindow::on_update(const QByteArray Data) {
 
-    std::cout << (int) Data[0] << std::endl << (int) Data[1] << std::endl;
-    std::cout << "received" << std::endl;
+    int speed = (int) (Data[0] + (Data[1] << 8));
 
+
+
+
+    float odometrie_g = (float) (((long) Data[8] << 24) + ((long) Data[7] << 16) + ((long) Data[6] << 8) + ((long) Data[5]));
+    float odometrie_l = (float) (((long) Data[16] << 24) + ((long) Data[15] << 16) + ((long) Data[14] << 8) + ((long) Data[14]));
+    std::cout << speed << std::endl;
+    std::cout << "odométrie: " << std::endl << odometrie_g << std::endl << odometrie_l << std::endl;
+    std::cout << " received" << std::endl;
+
+
+    short crc = robot.Crc16(Data, 19);
+    short received_crc = (short) (Data[19] + (Data[20] << 8));
+
+
+    if (crc == received_crc) {
+        std::cout << "valid crc" << std::endl;
+    } else {
+        std::cout << "invalid crc" << std::endl;
+    }
+
+    unsigned char batterie = Data[2];
+    QProgressBar* batterie_bar = findChild<QProgressBar*>("batterie");
+    if (batterie > 125) {
+        batterie_bar->setValue(100);
+    } else {
+        batterie_bar->setValue(batterie * 100 / 128);
+    }
 }
-
 
 void MainWindow::on_horizontalSlider_valueChanged(int value)
 {

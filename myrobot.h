@@ -17,6 +17,11 @@ public:
     void disConnect();
     void turn_left();
     void turn_right();
+
+
+    void update(short gspeed, short dspeed, float godometry, float dodometry);
+
+
     QByteArray DataToSend;
     QByteArray DataReceived;
     QMutex Mutex;

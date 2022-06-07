@@ -42,7 +42,6 @@ private slots:
     void on_robot_bottom_released();
 
     void on_toggleConnect_clicked();
-
     void turn_right();
     void turn_left();
 
@@ -51,6 +50,7 @@ private slots:
     void on_horizontalSlider_valueChanged(int value);
 
     void on_MaxSpeed_clicked(bool checked);
+
 
 private:
     Ui::MainWindow *ui;
