@@ -293,7 +293,7 @@ void MainWindow::on_update(const QByteArray Data) {
     unsigned char batterie = Data[2];
     QProgressBar* batterie_bar = findChild<QProgressBar*>("batterie");
     if (batterie > 125) {
-        batterie_bar->setValue(100);
+        //batterie_bar->setValue(100);
     } else {
         batterie_bar->setValue(batterie * 100 / 128);
     }
