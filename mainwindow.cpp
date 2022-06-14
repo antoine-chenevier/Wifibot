@@ -297,6 +297,9 @@ void MainWindow::on_update(const QByteArray Data) {
     } else {
         batterie_bar->setValue(batterie * 100 / 128);
     }
+
+
+    //robot.update()
 }
 
 void MainWindow::on_horizontalSlider_valueChanged(int value)
