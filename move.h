@@ -8,11 +8,13 @@ class Move : public Command
 public:
     Move(float length); // in meters
 
-    virtual bool is_done();
-    virtual QString type();
+    virtual void start(float god, float dod, MyRobot* robot);
+    virtual bool update(float god, float dod, MyRobot* robot);
 
 private:
     float length;
+    float init_god;
+    float init_dod;
 };
 
 #endif // MOVE_H

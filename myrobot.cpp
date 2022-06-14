@@ -4,8 +4,6 @@
 #include "move.h"
 #include "rotation.h"
 
-
-
 MyRobot::MyRobot(QObject *parent) : QObject(parent) {
     DataToSend.resize(9);
     DataToSend[0] = 0xFF;
@@ -91,4 +89,18 @@ short MyRobot::Crc16(QByteArray Adresse_tab,unsigned int Taille_max){
 
     return crc;
 }
+
+void MyRobot::rect(){
+    commands.push(new Move(2));
+    commands.push(new Rotation(90));
+    commands.push(new Move(1));
+    commands.push(new Rotation(90));
+    commands.push(new Move(2));
+    commands.push(new Rotation(90));
+    commands.push(new Move(1));
+    commands.push(new Rotation(90));
+}
+
+
+
 
