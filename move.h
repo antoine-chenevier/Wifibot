@@ -3,13 +3,16 @@
 
 #include "command.h"
 
-class Move : Command
+class Move : public Command
 {
 public:
-    Move(int length); // in meters
+    Move(float length); // in meters
+
+    virtual bool is_done();
+    virtual QString type();
 
 private:
-    int length;
+    float length;
 };
 
 #endif // MOVE_H

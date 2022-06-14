@@ -7,10 +7,10 @@
 #include <QDebug>
 #include <QTimer>
 #include <QMutex>
-#include "command.h"
-#include <stack>
 #include <queue>
 
+
+class Command;
 
 class MyRobot : public QObject {
     Q_OBJECT
@@ -45,7 +45,7 @@ private:
     QTcpSocket *socket;
     QTimer *TimerEnvoi;
 
-    std::queue<Command> commands;
+    std::queue<Command*> commands;
 };
 
 #endif // MYROBOT_H
