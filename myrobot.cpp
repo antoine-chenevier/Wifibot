@@ -148,14 +148,15 @@ void MyRobot::turn_right() {
 }
 
 void MyRobot::rect(){
-    commands.push(new Move(2));
-    commands.push(new Rotation(90));
-    commands.push(new Move(1));
-    commands.push(new Rotation(90));
-    commands.push(new Move(2));
-    commands.push(new Rotation(90));
-    commands.push(new Move(1));
-    commands.push(new Rotation(90));
+    forward();
+    QTimer::singleShot(500, this, &MyRobot::turn_left);
+    QTimer::singleShot(1000, this, &MyRobot::forward);
+    QTimer::singleShot(1500, this, &MyRobot::turn_left);
+    QTimer::singleShot(2000, this, &MyRobot::forward);
+    QTimer::singleShot(2500, this, &MyRobot::turn_left);
+    QTimer::singleShot(3000, this, &MyRobot::forward);
+    QTimer::singleShot(3500, this, &MyRobot::turn_left);
+    QTimer::singleShot(4000, this, &MyRobot::stop);
 }
 
 void MyRobot::set_speed(int s) {
