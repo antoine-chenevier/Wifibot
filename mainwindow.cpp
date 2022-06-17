@@ -272,9 +272,6 @@ void MainWindow::on_update(const QByteArray Data) {
 
     int speed = (int) (Data[0] + (Data[1] << 8));
 
-
-
-
     float odometrie_g = (float) (((long) Data[8] << 24) + ((long) Data[7] << 16) + ((long) Data[6] << 8) + ((long) Data[5]));
     float odometrie_l = (float) (((long) Data[16] << 24) + ((long) Data[15] << 16) + ((long) Data[14] << 8) + ((long) Data[14]));
     std::cout << speed << std::endl;
@@ -297,12 +294,6 @@ void MainWindow::on_update(const QByteArray Data) {
     //robot.update()
 }
 
-void MainWindow::on_horizontalSlider_valueChanged(int value)
-{
-    speed=value;
-    robot.set_speed(value);
-
-}
 
 void MainWindow::on_MaxSpeed_clicked(bool checked)
 {

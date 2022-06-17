@@ -18,12 +18,11 @@ public:
     explicit MyRobot(QObject *parent = 0);
     void doConnect();
     void disConnect();
+
     void turn_left();
     void turn_right();
     void forward();
     void stop();
-
-    void set_speed(int speed);
 
     void update(short gspeed, short dspeed, float godometry, float dodometry);
 
@@ -49,7 +48,6 @@ private:
     QTcpSocket *socket;
     QTimer *TimerEnvoi;
 
-    std::queue<Command*> commands;
     int speed;
 };
 

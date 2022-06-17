@@ -120,11 +120,11 @@ void MyRobot::stop() {
 }
 
 void MyRobot::turn_left() {
-    DataToSend[2] = 0;
-    DataToSend[3] = 0;
+    DataToSend[2] = speed;
+    DataToSend[3] = 1;
     DataToSend[4] = speed;
-    DataToSend[5] = speed;
-    DataToSend[6] = 16;
+    DataToSend[5] = 1;
+    DataToSend[6] = 16; // ajouter 128+32 pour asservissement
     short crc = Crc16(DataToSend, 7);
 
     char low = crc;
@@ -150,13 +150,13 @@ void MyRobot::turn_right() {
 void MyRobot::rect(){
     forward();
     QTimer::singleShot(500, this, &MyRobot::turn_left);
-    QTimer::singleShot(1000, this, &MyRobot::forward);
-    QTimer::singleShot(1500, this, &MyRobot::turn_left);
-    QTimer::singleShot(2000, this, &MyRobot::forward);
-    QTimer::singleShot(2500, this, &MyRobot::turn_left);
-    QTimer::singleShot(3000, this, &MyRobot::forward);
-    QTimer::singleShot(3500, this, &MyRobot::turn_left);
-    QTimer::singleShot(4000, this, &MyRobot::stop);
+    QTimer::singleShot(800, this, &MyRobot::forward);
+    QTimer::singleShot(1300, this, &MyRobot::turn_left);
+    QTimer::singleShot(1900, this, &MyRobot::forward);
+    QTimer::singleShot(2400, this, &MyRobot::turn_left);
+    QTimer::singleShot(2700, this, &MyRobot::forward);
+    QTimer::singleShot(3200, this, &MyRobot::turn_left);
+    QTimer::singleShot(3500, this, &MyRobot::stop);
 }
 
 void MyRobot::set_speed(int s) {
