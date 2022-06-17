@@ -181,7 +181,6 @@ void MainWindow::on_update(const QByteArray Data) {
     //robot.update()
 }
 
-
 void MainWindow::on_MaxSpeed_clicked(bool checked)
 {
     if(checked==true){

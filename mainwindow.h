@@ -45,7 +45,6 @@ private slots:
 
     void on_update(const QByteArray);
 
-    void on_horizontalSlider_valueChanged(int value);
 
     void on_MaxSpeed_clicked(bool checked);
 
