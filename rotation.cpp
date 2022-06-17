@@ -11,5 +11,6 @@ void Rotation::start(float god, float dod, MyRobot* robot) {
 }
 
 bool Rotation::update(float god, float dod, MyRobot* robot) {
+
     return true;
 }
