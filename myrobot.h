@@ -20,9 +20,13 @@ public:
     void disConnect();
     void turn_left();
     void turn_right();
+    void forward();
+    void stop();
 
+    void set_speed(int speed);
 
     void update(short gspeed, short dspeed, float godometry, float dodometry);
+
 
     void rect();
 
@@ -46,6 +50,7 @@ private:
     QTimer *TimerEnvoi;
 
     std::queue<Command*> commands;
+    int speed;
 };
 
 #endif // MYROBOT_H

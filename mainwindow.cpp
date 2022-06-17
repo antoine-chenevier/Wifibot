@@ -33,6 +33,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(&robot, &MyRobot::updateUI, this, &MainWindow::on_update);
 
+    robot.set_speed(120);
+
 }
 
 MainWindow::~MainWindow()
@@ -280,15 +282,8 @@ void MainWindow::on_update(const QByteArray Data) {
     std::cout << " received" << std::endl;
 
 
-    short crc = robot.Crc16(Data, 19);
-    short received_crc = (short) (Data[19] + (Data[20] << 8));
-
-
-    if (crc == received_crc) {
-        std::cout << "valid crc" << std::endl;
-    } else {
-        std::cout << "invalid crc" << std::endl;
-    }
+    //short crc = robot.Crc16(Data, 19);
+    //short received_crc = (short) (Data[19] + (Data[20] << 8));
 
     unsigned char batterie = Data[2];
     QProgressBar* batterie_bar = findChild<QProgressBar*>("batterie");
@@ -305,6 +300,7 @@ void MainWindow::on_update(const QByteArray Data) {
 void MainWindow::on_horizontalSlider_valueChanged(int value)
 {
     speed=value;
+    robot.set_speed(value);
 
 }
 
