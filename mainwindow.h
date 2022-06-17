@@ -42,8 +42,6 @@ private slots:
     void on_robot_bottom_released();
 
     void on_toggleConnect_clicked();
-    void turn_right();
-    void turn_left();
 
     void on_update(const QByteArray);
 

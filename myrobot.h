@@ -27,6 +27,8 @@ public:
 
     void update(short gspeed, short dspeed, float godometry, float dodometry);
 
+    void set_speed(int high, int low);
+
 
     void rect();
 
@@ -49,7 +51,9 @@ private:
     QTcpSocket *socket;
     QTimer *TimerEnvoi;
 
+
     int speed;
+    int maxSpeed;
 };
 
 #endif // MYROBOT_H

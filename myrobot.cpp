@@ -91,10 +91,10 @@ short MyRobot::Crc16(QByteArray Adresse_tab,unsigned int Taille_max){
 }
 
 void MyRobot::forward() {
-    DataToSend[2] = 0;
-    DataToSend[3] = 1;
-    DataToSend[4] = 0;
-    DataToSend[5] = 1;
+    DataToSend[2] = speed;
+    DataToSend[3] = maxSpeed;
+    DataToSend[4] = speed;
+    DataToSend[5] = maxSpeed;
     DataToSend[6] = 64 + 16; // ajouter 128+32 pour asservissement
     short crc = Crc16(DataToSend, 7);
 
@@ -119,10 +119,10 @@ void MyRobot::stop() {
 }
 
 void MyRobot::turn_left() {
-    DataToSend[2] = 0;
-    DataToSend[3] = 1;
-    DataToSend[4] = 0;
-    DataToSend[5] = 1;
+    DataToSend[2] = speed;
+    DataToSend[3] = maxSpeed;
+    DataToSend[4] = speed;
+    DataToSend[5] = maxSpeed;
     DataToSend[6] = 16; // ajouter 128+32 pour asservissement
     short crc = Crc16(DataToSend, 7);
 
@@ -133,10 +133,10 @@ void MyRobot::turn_left() {
 }
 
 void MyRobot::turn_right() {
-    DataToSend[2] = 0;
-    DataToSend[3] = 1;
-    DataToSend[4] = 0;
-    DataToSend[5] = 1;
+    DataToSend[2] = speed;
+    DataToSend[3] = maxSpeed;
+    DataToSend[4] = speed;
+    DataToSend[5] = maxSpeed;
     DataToSend[6] = 64; // ajouter 128+32 pour asservissement
     short crc = Crc16(DataToSend, 7);
 
@@ -160,10 +160,10 @@ void MyRobot::rect(){
 
 
 void MyRobot::backward() {
-    DataToSend[2] = 0; // low speed
-    DataToSend[3] = 1; // high speed
-    DataToSend[4] = 0;
-    DataToSend[5] = 1;
+    DataToSend[2] = speed;
+    DataToSend[3] = maxSpeed;
+    DataToSend[4] = speed;
+    DataToSend[5] = maxSpeed;
     DataToSend[6] = 0;
     short crc = Crc16(DataToSend, 7);
 
@@ -171,4 +171,9 @@ void MyRobot::backward() {
     char high = crc >> 8;
     DataToSend[7] = low;
     DataToSend[8] = high;
+}
+
+void MyRobot::set_speed(int high, int low) {
+    maxSpeed = high;
+    speed = low;
 }

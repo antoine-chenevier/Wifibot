@@ -9,19 +9,13 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    command.cpp \
-    move.cpp \
     myrobot.cpp \
     main.cpp \
-    mainwindow.cpp \
-    rotation.cpp
+    mainwindow.cpp
 
 HEADERS += \
-    command.h \
     mainwindow.h \
-    move.h \
-    myrobot.h \
-    rotation.h
+    myrobot.h
 
 FORMS += \
     mainwindow.ui
