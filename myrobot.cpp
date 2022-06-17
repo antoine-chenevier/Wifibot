@@ -91,12 +91,11 @@ short MyRobot::Crc16(QByteArray Adresse_tab,unsigned int Taille_max){
 }
 
 void MyRobot::forward() {
-    // speed to do
     DataToSend[2] = 0;
-    DataToSend[3] = 0;
-    DataToSend[4] = speed;
-    DataToSend[5] = speed;
-    DataToSend[6] = 64 + 16;
+    DataToSend[3] = 1;
+    DataToSend[4] = 0;
+    DataToSend[5] = 1;
+    DataToSend[6] = 64 + 16; // ajouter 128+32 pour asservissement
     short crc = Crc16(DataToSend, 7);
 
     char low = crc;
@@ -120,9 +119,9 @@ void MyRobot::stop() {
 }
 
 void MyRobot::turn_left() {
-    DataToSend[2] = speed;
+    DataToSend[2] = 0;
     DataToSend[3] = 1;
-    DataToSend[4] = speed;
+    DataToSend[4] = 0;
     DataToSend[5] = 1;
     DataToSend[6] = 16; // ajouter 128+32 pour asservissement
     short crc = Crc16(DataToSend, 7);
@@ -134,11 +133,11 @@ void MyRobot::turn_left() {
 }
 
 void MyRobot::turn_right() {
-    DataToSend[2] = speed;
-    DataToSend[3] = speed;
+    DataToSend[2] = 0;
+    DataToSend[3] = 1;
     DataToSend[4] = 0;
-    DataToSend[5] = 0;
-    DataToSend[6] = 64;
+    DataToSend[5] = 1;
+    DataToSend[6] = 64; // ajouter 128+32 pour asservissement
     short crc = Crc16(DataToSend, 7);
 
     char low = crc;
@@ -159,20 +158,17 @@ void MyRobot::rect(){
     QTimer::singleShot(3500, this, &MyRobot::stop);
 }
 
-void MyRobot::set_speed(int s) {
-    speed = s;
+
+void MyRobot::backward() {
+    DataToSend[2] = 0; // low speed
+    DataToSend[3] = 1; // high speed
+    DataToSend[4] = 0;
+    DataToSend[5] = 1;
+    DataToSend[6] = 0;
+    short crc = Crc16(DataToSend, 7);
+
+    char low = crc;
+    char high = crc >> 8;
+    DataToSend[7] = low;
+    DataToSend[8] = high;
 }
-
-
-void MyRobot::update(short gspeed, short dspeed, float godometry, float dodometry){
-    return;
-    /*
-    if (commands.empty()) {
-        return;
-    }
-    Command * cmd = commands.front();
-    if (cmd->update(godometry, dodometry, this)) {
-        commands.pop();
-    }*/
-}
-

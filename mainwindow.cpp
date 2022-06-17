@@ -33,8 +33,6 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(&robot, &MyRobot::updateUI, this, &MainWindow::on_update);
 
-    robot.set_speed(120);
-
 }
 
 MainWindow::~MainWindow()
@@ -79,116 +77,41 @@ void MainWindow::on_r_right_pressed()
 
 void MainWindow::on_robot_right_pressed()
 {
-    int s1=speed/128;
-    int s2=speed%128;
-    robot.DataToSend[2] = speed;
-    robot.DataToSend[3] = MaxSpeed;
-    robot.DataToSend[4] = speed;
-    robot.DataToSend[5] = MaxSpeed;
-    robot.DataToSend[6] = 64; // ajouter 128+32 pour asservissement
-    short crc = robot.Crc16(robot.DataToSend, 7);
-
-    char low = crc;
-    char high = crc >> 8;
-    robot.DataToSend[7] = low;
-    robot.DataToSend[8] = high;
+    robot.turn_right();
 }
 
 
 void MainWindow::on_robot_left_pressed()
 {
-     robot.DataToSend[2] = speed;
-     robot.DataToSend[3] = MaxSpeed;
-     robot.DataToSend[4] = speed;
-     robot.DataToSend[5] = MaxSpeed;
-     robot.DataToSend[6] = 16; // ajouter 128+32 pour asservissement
-     short crc = robot.Crc16(robot.DataToSend, 7);
-
-     char low = crc;
-     char high = crc >> 8;
-     robot.DataToSend[7] = low;
-     robot.DataToSend[8] = high;
-
+     robot.turn_left();
 }
 
 
 void MainWindow::on_robot_top_pressed()
 {
-    robot.DataToSend[2] = speed;
-    robot.DataToSend[3] = MaxSpeed;
-    robot.DataToSend[4] = speed;
-    robot.DataToSend[5] = MaxSpeed;
-    robot.DataToSend[6] = 64 + 16; // ajouter 128+32 pour asservissement
-    short crc = robot.Crc16(robot.DataToSend, 7);
-
-    char low = crc;
-    char high = crc >> 8;
-    robot.DataToSend[7] = low;
-    robot.DataToSend[8] = high;
-
-
+    robot.forward();
 }
 
 void MainWindow::on_robot_bottom_pressed()
 {
-    robot.DataToSend[2] = speed;
-    robot.DataToSend[3] = MaxSpeed;
-    robot.DataToSend[4] = speed;
-    robot.DataToSend[5] = MaxSpeed;
-    robot.DataToSend[6] = 0+0; // ajouter 128+32 pour asservissement
-    short crc = robot.Crc16(robot.DataToSend, 7);
-
-    char low = crc;
-    char high = crc >> 8;
-    robot.DataToSend[7] = low;
-    robot.DataToSend[8] = high;
+    robot.backward();
 }
 
 void MainWindow::on_robot_right_released()
 {
-    robot.DataToSend[2] = 0;
-    robot.DataToSend[3] = 0;
-    robot.DataToSend[4] = 0;
-    robot.DataToSend[5] = 0;
-    robot.DataToSend[6] = 0;
-    short crc = robot.Crc16(robot.DataToSend, 7);
-
-    char low = crc;
-    char high = crc >> 8;
-    robot.DataToSend[7] = low;
-    robot.DataToSend[8] = high;
+    robot.stop();
 }
 
 
 void MainWindow::on_robot_left_released()
 {
-    robot.DataToSend[2] = 0;
-    robot.DataToSend[3] = 0;
-    robot.DataToSend[4] = 0;
-    robot.DataToSend[5] = 0;
-    robot.DataToSend[6] = 0;
-    short crc = robot.Crc16(robot.DataToSend, 7);
-
-    char low = crc;
-    char high = crc >> 8;
-    robot.DataToSend[7] = low;
-    robot.DataToSend[8] = high;
+    robot.stop();
 }
 
 
 void MainWindow::on_robot_top_released()
 {
-    robot.DataToSend[2] = 0;
-    robot.DataToSend[3] = 0;
-    robot.DataToSend[4] = 0;
-    robot.DataToSend[5] = 0;
-    robot.DataToSend[6] = 0;
-    short crc = robot.Crc16(robot.DataToSend, 7);
-
-    char low = crc;
-    char high = crc >> 8;
-    robot.DataToSend[7] = low;
-    robot.DataToSend[8] = high;
+    robot.stop();
 }
 
 
@@ -197,45 +120,9 @@ void MainWindow::on_robot_top_released()
 
 void MainWindow::on_robot_bottom_released()
 {
-    robot.DataToSend[2] = 0;
-    robot.DataToSend[3] = 0;
-    robot.DataToSend[4] = 0;
-    robot.DataToSend[5] = 0;
-    robot.DataToSend[6] = 0;
-    short crc = robot.Crc16(robot.DataToSend, 7);
-
-    char low = crc;
-    char high = crc >> 8;
-    robot.DataToSend[7] = low;
-    robot.DataToSend[8] = high;
+    robot.stop();
 }
 
-void MainWindow::turn_left(){
-    robot.DataToSend[2] = 0;
-    robot.DataToSend[3] = 0;
-    robot.DataToSend[4] = speed;
-    robot.DataToSend[5] = speed;
-    robot.DataToSend[6] = 16;
-    short crc = robot.Crc16(robot.DataToSend, 7);
-
-    char low = crc;
-    char high = crc >> 8;
-    robot.DataToSend[7] = low;
-    robot.DataToSend[8] = high;
-}
-void MainWindow::turn_right(){
-    robot.DataToSend[2] = speed;
-    robot.DataToSend[3] = speed;
-    robot.DataToSend[4] = 0;
-    robot.DataToSend[5] = 0;
-    robot.DataToSend[6] = 64;
-    short crc = robot.Crc16(robot.DataToSend, 7);
-
-    char low = crc;
-    char high = crc >> 8;
-    robot.DataToSend[7] = low;
-    robot.DataToSend[8] = high;
-}
 
 void MainWindow::on_toggleConnect_clicked()
 {

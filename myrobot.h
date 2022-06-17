@@ -22,6 +22,7 @@ public:
     void turn_left();
     void turn_right();
     void forward();
+    void backward();
     void stop();
 
     void update(short gspeed, short dspeed, float godometry, float dodometry);
