@@ -7,10 +7,10 @@
 #include <QDebug>
 #include <QTimer>
 #include <QMutex>
-#include "command.h"
-#include <stack>
 #include <queue>
 
+
+class Command;
 
 class MyRobot : public QObject {
     Q_OBJECT
@@ -20,9 +20,13 @@ public:
     void disConnect();
     void turn_left();
     void turn_right();
+    void forward();
+    void stop();
 
+    void set_speed(int speed);
 
     void update(short gspeed, short dspeed, float godometry, float dodometry);
+
 
     void rect();
 
@@ -45,7 +49,8 @@ private:
     QTcpSocket *socket;
     QTimer *TimerEnvoi;
 
-    std::queue<Command> commands;
+    std::queue<Command*> commands;
+    int speed;
 };
 
 #endif // MYROBOT_H

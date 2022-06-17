@@ -90,26 +90,89 @@ short MyRobot::Crc16(QByteArray Adresse_tab,unsigned int Taille_max){
     return crc;
 }
 
+void MyRobot::forward() {
+    // speed to do
+    DataToSend[2] = 0;
+    DataToSend[3] = 0;
+    DataToSend[4] = speed;
+    DataToSend[5] = speed;
+    DataToSend[6] = 64 + 16;
+    short crc = Crc16(DataToSend, 7);
+
+    char low = crc;
+    char high = crc >> 8;
+    DataToSend[7] = low;
+    DataToSend[8] = high;
+}
+
+void MyRobot::stop() {
+    DataToSend[2] = 0;
+    DataToSend[3] = 0;
+    DataToSend[4] = 0;
+    DataToSend[5] = 0;
+    DataToSend[6] = 0;
+    short crc = Crc16(DataToSend, 7);
+
+    char low = crc;
+    char high = crc >> 8;
+    DataToSend[7] = low;
+    DataToSend[8] = high;
+}
+
+void MyRobot::turn_left() {
+    DataToSend[2] = 0;
+    DataToSend[3] = 0;
+    DataToSend[4] = speed;
+    DataToSend[5] = speed;
+    DataToSend[6] = 16;
+    short crc = Crc16(DataToSend, 7);
+
+    char low = crc;
+    char high = crc >> 8;
+    DataToSend[7] = low;
+    DataToSend[8] = high;
+}
+
+void MyRobot::turn_right() {
+    DataToSend[2] = speed;
+    DataToSend[3] = speed;
+    DataToSend[4] = 0;
+    DataToSend[5] = 0;
+    DataToSend[6] = 64;
+    short crc = Crc16(DataToSend, 7);
+
+    char low = crc;
+    char high = crc >> 8;
+    DataToSend[7] = low;
+    DataToSend[8] = high;
+}
+
 void MyRobot::rect(){
-    commands.push(new Move(2));
-    commands.push(new Rotation(90));
-    commands.push(new Move(1));
-    commands.push(new Rotation(90));
-    commands.push(new Move(2));
-    commands.push(new Rotation(90));
-    commands.push(new Move(1));
-    commands.push(new Rotation(90));
+    forward();
+    QTimer::singleShot(500, this, &MyRobot::turn_left);
+    QTimer::singleShot(1000, this, &MyRobot::forward);
+    QTimer::singleShot(1500, this, &MyRobot::turn_left);
+    QTimer::singleShot(2000, this, &MyRobot::forward);
+    QTimer::singleShot(2500, this, &MyRobot::turn_left);
+    QTimer::singleShot(3000, this, &MyRobot::forward);
+    QTimer::singleShot(3500, this, &MyRobot::turn_left);
+    QTimer::singleShot(4000, this, &MyRobot::stop);
+}
+
+void MyRobot::set_speed(int s) {
+    speed = s;
 }
 
 
-
-
-
-
-
-
-
-
-
-
+void MyRobot::update(short gspeed, short dspeed, float godometry, float dodometry){
+    return;
+    /*
+    if (commands.empty()) {
+        return;
+    }
+    Command * cmd = commands.front();
+    if (cmd->update(godometry, dodometry, this)) {
+        commands.pop();
+    }*/
+}
 
