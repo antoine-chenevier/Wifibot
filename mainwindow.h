@@ -49,6 +49,8 @@ private slots:
     void on_MaxSpeed_clicked(bool checked);
 
 
+    void on_pushButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     MyRobot robot;

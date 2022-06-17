@@ -191,3 +191,9 @@ void MainWindow::on_MaxSpeed_clicked(bool checked)
     }
 }
 
+
+void MainWindow::on_pushButton_clicked()
+{
+    robot.rect();
+}
+
